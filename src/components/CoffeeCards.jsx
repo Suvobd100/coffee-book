@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const CoffeeCards = () => {
-    const naviget=useNavigate();
+  const naviget = useNavigate();
   // coffee from routes data
   const data = useLoaderData();
   // dynamic category shown
@@ -28,16 +28,17 @@ const CoffeeCards = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-3">
+      <div className="grid grid-cols-1 lg:grid-cols-3 mt-12">
         {coffee.map((c) => (
           <Cards key={c.id} coffee={c} />
         ))}
       </div>
-      <button onClick={()=>naviget('/coffees')}
-       className="btn btn-active btn-accent flex justify-center items-center">
+      <button
+        onClick={() => naviget("/coffees")}
+        className="btn btn-active btn-accent flex justify-center items-center"
+      >
         View All
-        
-        </button>
+      </button>
     </>
   );
 };

@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link, Links } from "react-router-dom";
 
 const Cards = ({ coffee }) => {
   console.log(coffee);
@@ -39,11 +40,41 @@ const Cards = ({ coffee }) => {
     rating,
     popularity,
   } = coffee || {};
-  return <div>{
-    <h1>{name}</h1>
-    }
-   
-    </div>;
+  return (
+    <>
+      {
+        <Link to={`/coffee/${id}`}>
+          <div className="card card-compact bg-base-100 w-96 shadow-xl mb-12">
+            <figure className="w-full h-48 overflow-hidden">
+              <img src={image} alt="Shoes" />
+            </figure>
+            <div className="card-body">
+              <div className="grid grid-cols-2">
+              <h2 className="card-title">Name :</h2>
+              <h2 className="text-xl">{name}</h2>
+              </div>
+              <div className="grid grid-cols-2">
+                <p className="font-bold">Category : </p> <span>{category}</span>
+              </div>
+              <div className="grid grid-cols-2">
+                <p className="font-bold">Type : </p> <span>{type}</span>
+              </div>
+              <div className="grid grid-cols-2">
+                <p className="font-bold">Origin : </p> <span>{origin}</span>
+              </div>
+              <div className="grid grid-cols-2">
+                <p className="font-bold">Rating : </p> <span>{rating}</span>
+              </div>
+              <div className="grid grid-cols-2">
+                <p className="font-bold">Popularity : </p> <span>{popularity}</span>
+              </div>
+              
+            </div>
+          </div>
+        </Link>
+      }
+    </>
+  );
 };
 
 Cards.propTypes = {
