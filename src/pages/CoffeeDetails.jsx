@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import nutritionImg from "../assets/nutrition.png";
-import { addFavorite } from "../utils";
+import { addFavorite, getAllFavorites } from "../utils";
 
 const CoffeeDetails = () => {
   // get all data loader hook
@@ -12,12 +12,23 @@ const CoffeeDetails = () => {
   const { id } = useParams();
 
   const [coffee, setCoffee] = useState({});
+
+  // Add Favorite Button Disabled function
+  const [isFavorite, setIsFavorite]=useState(false); 
+
+  // Find the specific Coffee id from all coffee data
   useEffect(() => {
     const singleCoffeeData = allCoffeesData.find(
       (coffee) => coffee.id === parseInt(id)
     );
     setCoffee(singleCoffeeData);
-  }, [allCoffeesData, id]);
+    // Favorite button checked from local storage getAllFavorite function
+    const favorites = getAllFavorites();
+    const isExist = favorites.find(item => item.id == coffee.id);
+    if(isExist){
+      setIsFavorite(true);
+    }
+  }, [allCoffeesData, id,coffee.id]);
 
   // destructuring  data
   const {
@@ -38,6 +49,8 @@ const CoffeeDetails = () => {
   // Handel favorite btn click function 
   const handelFavorite=(coffee)=>{
       addFavorite(coffee);
+      // when favorite button clicked dynamically disabled the button
+      setIsFavorite(true);
 
   }
   return (
@@ -56,7 +69,9 @@ const CoffeeDetails = () => {
           <p className="text-base">Rating : {rating}</p>
         </div>
         <div>
-          <button onClick={()=>handelFavorite(coffee)} className="btn btn-warning">Add Favorite</button>
+          <button
+          disabled={isFavorite}
+          onClick={()=>handelFavorite(coffee)} className="btn btn-warning">Add Favorite</button>
         </div>
       </div>
       {/* making process */}
