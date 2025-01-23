@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { FaTrashAlt } from "react-icons/fa";
+// import { removeFavorite } from "../utils";
 
-const Cards = ({ coffee }) => {
+const Cards = ({ coffee, handelRemove }) => {
 //   console.log(coffee);
 
   // {
@@ -26,6 +28,10 @@ const Cards = ({ coffee }) => {
   //     "rating": 4.5,
   //     "popularity": 87
   // }
+  // const location=useLocation();
+const {pathname}=useLocation();
+// console.log(pathname);
+
   const {
     id,
     name,
@@ -40,8 +46,11 @@ const Cards = ({ coffee }) => {
     rating,
     popularity,
   } = coffee || {};
+
+
+
   return (
-    <>
+    <div className="flex relative">
       {
         <Link to={`/coffee/${id}`}>
           <div className="card card-compact bg-base-100 w-96 shadow-xl mb-12">
@@ -72,8 +81,16 @@ const Cards = ({ coffee }) => {
             </div>
           </div>
         </Link>
+        
       }
-    </>
+      {
+        pathname === '/dashboard' &&
+          <div onClick={()=>handelRemove(id)}
+          className="absolute -top-8 -left-2 p-3 bg-warning rounded-full cursor-pointer">
+            <FaTrashAlt />
+            </div>
+      }
+    </div>
   );
 };
 

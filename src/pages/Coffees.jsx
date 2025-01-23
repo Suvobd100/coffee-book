@@ -35,6 +35,7 @@ function Coffees() {
       <button onClick={()=>handleShort('rating')} className="btn btn-warning">Short By Ratting</button>
     </div>
  </div>
+ {/* render coffees card */}
  <div className="grid grid-cols-1 lg:grid-cols-3 mt-12">
   {coffees.map((c) => (
     <Cards key={c.id} coffee={c} />
