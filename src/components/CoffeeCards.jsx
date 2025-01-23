@@ -33,12 +33,15 @@ const CoffeeCards = () => {
           <Cards key={c.id} coffee={c} />
         ))}
       </div>
-      <button
-        onClick={() => naviget("/coffees")}
-        className="btn btn-active btn-accent flex justify-center items-center"
-      >
-        View All
-      </button>
+      <div className="flex justify-center items-center bg-gray-100">
+        <button
+          onClick={() => naviget("/coffees")}
+          className="btn btn-active btn-accent px-6 py-3 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out"
+          // className="btn btn-active btn-accent flex justify-center items-center h-20 mt-8"
+        >
+          View All
+        </button>
+      </div>
     </>
   );
 };

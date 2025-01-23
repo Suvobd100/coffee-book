@@ -8,7 +8,7 @@ function Home() {
   // console.log(categories);
   return (
     <div>
-      Home Page
+      
       {/* Banner */}
       <Banner/>
       <Heading title={'Browse Coffees by Category'} 

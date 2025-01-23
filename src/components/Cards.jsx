@@ -96,6 +96,7 @@ const {pathname}=useLocation();
 
 Cards.propTypes = {
   coffee: PropTypes.object,
+  handelRemove : PropTypes.func
 };
 
 export default Cards;
