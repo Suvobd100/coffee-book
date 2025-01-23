@@ -6,6 +6,7 @@ import Coffees from "../pages/Coffees";
 import Dashboard from "../pages/Dashboard";
 import Error from "../pages/Error";
 import CoffeeCards from "../components/CoffeeCards";
+import CoffeeDetails from "../pages/CoffeeDetails";
 
 
 const routes = createBrowserRouter([
@@ -22,12 +23,12 @@ const routes = createBrowserRouter([
           {
             path: "/",
             element:<CoffeeCards/>,
-            loader: ()=> fetch('../coffees.json')
+            loader: ()=> fetch('../coffees.json'),
           },
           {
             path: "/category/:category",
             element:<CoffeeCards/>,
-            loader: ()=> fetch('../coffees.json')
+            loader: ()=> fetch('../coffees.json'),
           },
           
         ],
@@ -35,11 +36,16 @@ const routes = createBrowserRouter([
       {
         path: "/coffees",
         element: <Coffees />,
-        loader: ()=> fetch('../coffees.json')
+        loader: ()=> fetch('../coffees.json'),
       },
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },  
+      {
+        path: "coffee/:id",
+        element: <CoffeeDetails/>,
+        loader: ()=> fetch('../coffees.json'),
       },  
      
     ],

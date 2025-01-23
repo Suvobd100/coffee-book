@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import { Link, Links } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Cards = ({ coffee }) => {
-  console.log(coffee);
+//   console.log(coffee);
 
   // {
   //     "id": 7,

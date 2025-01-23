@@ -7,8 +7,10 @@ function MainLayout() {
   return (
     <div className=" ">
         {/* Navbar */}
+        <div className="h-16">
         <Navbar/>
-     <div className="min-h-[calc(100vh-236px)] py-12 container mx-auto px-12">
+        </div>
+     <div className="min-h-[calc(100vh-236px)] py-12 container mx-auto">
            {/* Dynamic Section */}
            <Outlet/>
      </div>
