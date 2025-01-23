@@ -1,7 +1,8 @@
-import { object } from "prop-types";
+// import { object } from "prop-types";
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import nutritionImg from "../assets/nutrition.png";
+import { addFavorite } from "../utils";
 
 const CoffeeDetails = () => {
   // get all data loader hook
@@ -20,27 +21,32 @@ const CoffeeDetails = () => {
 
   // destructuring  data
   const {
-    id: coffeeID,
+    // id: coffeeID,
     name,
-    category,
-    origin,
+    // category,
+    // origin,
     image,
     ingredients,
     nutrition_info,
-    type,
+    // type,
     description,
     making_process,
     rating,
     popularity,
   } = coffee;
 
+  // Handel favorite btn click function 
+  const handelFavorite=(coffee)=>{
+      addFavorite(coffee);
+
+  }
   return (
     <div className="my-12">
       {/* Description */}
       <h2 className="text-2xl md:text-4xl font-thin my-6">{description}</h2>
       {/* Image */}
       <div className="w-full h-full md:h-[500px] object-cover overflow-hidden">
-        <img className="w-full h-full" src={image} alt="page cover image" />
+        <img className="w-full h-full rounded-xl" src={image} alt="page cover image" />
       </div>
       {/* Title and Favorite Button */}
       <div className="flex justify-between items-center my-6">
@@ -50,7 +56,7 @@ const CoffeeDetails = () => {
           <p className="text-base">Rating : {rating}</p>
         </div>
         <div>
-          <button className="btn btn-warning">Add Favorite</button>
+          <button onClick={()=>handelFavorite(coffee)} className="btn btn-warning">Add Favorite</button>
         </div>
       </div>
       {/* making process */}
@@ -77,8 +83,8 @@ const CoffeeDetails = () => {
             <h2 className="text-2xl font-thin">Nutrition:</h2>
             <ul className="text-xl ml-12">
               {nutrition_info &&
-                Object.keys(nutrition_info).map((n) => (
-                  <li className="list-disc" key={nutrition_info[n]}>
+                Object.keys(nutrition_info).map((n,index) => (
+                  <li className="list-disc" key={index}>
                     {n}: {nutrition_info[n]}
                   </li>
                 ))}

@@ -32,11 +32,11 @@ const Cards = ({ coffee }) => {
     category,
     origin,
     image,
-    ingredients,
-    nutrition_info,
+    // ingredients,
+    // nutrition_info,
     type,
-    description,
-    making_process,
+    // description,
+    // making_process,
     rating,
     popularity,
   } = coffee || {};
@@ -45,7 +45,7 @@ const Cards = ({ coffee }) => {
       {
         <Link to={`/coffee/${id}`}>
           <div className="card card-compact bg-base-100 w-96 shadow-xl mb-12">
-            <figure className="w-full h-48 overflow-hidden">
+            <figure className="w-full h-48 overflow-hidden ">
               <img src={image} alt="Shoes" />
             </figure>
             <div className="card-body">
